@@ -42,5 +42,10 @@ Also, as always, there are easter eggs scattered throughout this challenge; be t
 1. You don't need any previous knowledge from IDA cracking (namely, the leaked password generation algorithm for IDA <= 7.0) to solve the challenge. However, do keep a copy of IDA 7.0 at hand for convenience.
 2. The Inno Setup compiler used for generating the given package is modded (for obvious reasons), effectively removed a security feature.
 3. To save some guessing, the compression algorithm this installer is using internally is zlib with compression level 7. Note that the compression result is only reproducible with small files. [This chart](https://stackoverflow.com/a/54915442) might come in handy.
-4. *Coming soon*
+4. FINAL HINT: The modded line of code in Inno Setup is as follows:
+
+```diff
+- GenerateRandomBytes(Salt, SizeOf(Salt));
++ FillChar(Salt, SizeOf(Salt), 0);
+```
 

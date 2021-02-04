@@ -36,5 +36,10 @@
 1. 上面的叙述只是说明题目背景，这道题和网上对IDA及其破解的研究（例如说IDA 7.0已知的密码生成算法）完全无关，不要在这上面浪费时间。不过还是准备一份IDA 7.0吧，万一用到了呢。
 2. 为了让这道题能做，生成题目安装包用的Inno Setup被修改过，移除了一个安全功能。
 3. 题目安装包中压缩数据使用的压缩算法是zlib，压缩等级为7。[这张表](https://stackoverflow.com/a/54915442)可能会有用。
-4. *敬请期待*
+4. 最后一条提示：Inno Setup修改的一行代码如下：
+
+```diff
+- GenerateRandomBytes(Salt, SizeOf(Salt));
++ FillChar(Salt, SizeOf(Salt), 0);
+```
 
